@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assessment/database/database.dart';
+import 'package:flutter_assessment/screens/main_menu_screen.dart';
 
 void main() {
-  runApp(const MainApp());
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final database = AppDataBase.instance;
+  runApp(MainApp(database: database));
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  final AppDataBase database;
+  const MainApp({super.key, required this.database});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      title: 'Flight App',
+      home: MainMenuScreen(database: database),
     );
   }
 }
