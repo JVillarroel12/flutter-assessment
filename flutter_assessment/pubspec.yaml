@@ -1,6 +1,6 @@
 name: flutter_assessment
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
@@ -9,6 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http: ^0.13.5
+  sqflite: ^2.2.8
+  path_provider: ^2.0.15
+  path: ^1.8.3
 
 dev_dependencies:
   flutter_test:
