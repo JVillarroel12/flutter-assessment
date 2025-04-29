@@ -17,19 +17,7 @@ class AppDatabase {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, filePath);
 
-    return await openDatabase(
-      path,
-      version: 5,
-      onCreate: _createDB,
-      onUpgrade: (db, oldVersion, newVersion) async {
-        if (oldVersion < 2) {
-          await db.execute('DROP TABLE IF EXISTS itinerary_legs');
-          await db.execute('DROP TABLE IF EXISTS itineraries');
-          await db.execute('DROP TABLE IF EXISTS legs');
-          await _createDB(db, newVersion);
-        }
-      },
-    );
+    return await openDatabase(path, version: 7, onCreate: _createDB);
   }
 
   Future _createDB(Database db, int version) async {

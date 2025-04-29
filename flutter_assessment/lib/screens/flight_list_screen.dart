@@ -8,6 +8,7 @@ import 'package:flutter_assessment/screens/flight_detail_screen.dart';
 
 class FlightListScreen extends StatefulWidget {
   final AppDatabase database;
+
   const FlightListScreen({super.key, required this.database});
 
   @override
@@ -19,6 +20,7 @@ class _FlightListScreenState extends State<FlightListScreen> {
   List<Itinerary> itineraries = [];
   List<Itinerary> filteredItineraries = [];
   String? filterAgent;
+
   @override
   void initState() {
     super.initState();
@@ -58,11 +60,11 @@ class _FlightListScreenState extends State<FlightListScreen> {
       body: Column(
         children: [
           Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: TextField(
               decoration: InputDecoration(
                 labelText: 'Filtrar por agente',
-                hintText: 'Ej: Conviasa',
+                hintText: 'Ej: conviasa',
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -77,7 +79,10 @@ class _FlightListScreenState extends State<FlightListScreen> {
               itemBuilder: (context, index) {
                 final itinerary = filteredItineraries[index];
                 return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
                   child: Card(
                     child: InkWell(
                       borderRadius: BorderRadius.circular(12),
@@ -94,7 +99,7 @@ class _FlightListScreenState extends State<FlightListScreen> {
                         );
                       },
                       child: Padding(
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(16),
                         child: FlightCard(itinerary: itinerary),
                       ),
                     ),

@@ -10,13 +10,13 @@ class Itinerary {
     required this.legs,
     required this.price,
     required this.agent,
-    required this.agentRating,
+    this.agentRating,
   });
 
   factory Itinerary.fromJson(Map<String, dynamic> json) {
     return Itinerary(
       id: json['id'],
-      legs: List<String>.from(['legs']),
+      legs: List<String>.from(json['legs']),
       price: json['price'],
       agent: json['agent'],
       agentRating: json['agentRating'],

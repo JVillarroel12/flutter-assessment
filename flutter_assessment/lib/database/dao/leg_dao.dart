@@ -1,5 +1,5 @@
 import 'package:flutter_assessment/api/models/leg.dart';
-import 'package:flutter_assessment/database/database.dart';
+import '../database.dart';
 import 'package:sqflite/sqflite.dart';
 
 class LegDao {
