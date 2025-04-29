@@ -13,11 +13,11 @@ class FlightApi {
     if (response.statusCode == 200) {
       return json.decode(response.body);
     } else {
-      throw Exception("Failed to load data");
+      throw Exception("Failed to load flight data");
     }
   }
 
-  Future<List<Itinerary>> fetchItiniraries() async {
+  Future<List<Itinerary>> fetchItineraries() async {
     final data = await fetchFlightData();
     final itinerariesJson = data['itineraries'] as List;
     return itinerariesJson.map((json) => Itinerary.fromJson(json)).toList();

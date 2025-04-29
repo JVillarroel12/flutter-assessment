@@ -3,7 +3,7 @@ import 'package:flutter_assessment/database/database.dart';
 import 'package:sqflite/sqflite.dart';
 
 class LegDao {
-  final AppDataBase _database;
+  final AppDatabase _database;
 
   LegDao(this._database);
 
@@ -44,17 +44,17 @@ class LegDao {
         .toList();
   }
 
-  Future<List<Map<String, dynamic>>> gettAllAirlinesWithLegCount() async {
+  Future<List<Map<String, dynamic>>> getAllAirlinesWithLegCount() async {
     final db = await _database.database;
     return await db.rawQuery('''
-        SELECT 
+    SELECT 
       airline_id, 
       airline_name, 
       COUNT(*) as leg_count 
     FROM legs 
     GROUP BY airline_id, airline_name 
     ORDER BY leg_count DESC
-''');
+  ''');
   }
 
   Future<List<Leg>> getLegsByIds(List<String> legIds) async {

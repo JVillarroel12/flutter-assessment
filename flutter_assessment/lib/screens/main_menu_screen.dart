@@ -5,7 +5,7 @@ import 'package:flutter_assessment/screens/airline_list_screen.dart';
 import 'package:flutter_assessment/screens/flight_list_screen.dart';
 
 class MainMenuScreen extends StatelessWidget {
-  final AppDataBase database;
+  final AppDatabase database;
   const MainMenuScreen({super.key, required this.database});
 
   @override

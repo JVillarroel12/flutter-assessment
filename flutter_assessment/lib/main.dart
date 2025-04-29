@@ -5,12 +5,13 @@ import 'package:flutter_assessment/screens/main_menu_screen.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final database = AppDataBase.instance;
+  final database = AppDatabase.instance;
+
   runApp(MainApp(database: database));
 }
 
 class MainApp extends StatelessWidget {
-  final AppDataBase database;
+  final AppDatabase database;
   const MainApp({super.key, required this.database});
 
   @override

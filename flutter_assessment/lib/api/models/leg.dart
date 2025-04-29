@@ -28,7 +28,7 @@ class Leg {
       arrivalAirport: json['arrival_airport'],
       departureTime: DateTime.parse(json['departure_time']),
       arrivalTime: DateTime.parse(json['arrival_time']),
-      stops: json['stop'],
+      stops: json['stops'],
       airlineName: json['airline_name'],
       airlineId: json['airline_id'],
       durationMins: json['duration_mins'],

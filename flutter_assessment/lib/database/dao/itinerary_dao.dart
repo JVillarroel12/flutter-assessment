@@ -3,15 +3,15 @@ import 'package:flutter_assessment/database/database.dart';
 import 'package:sqflite/sqflite.dart';
 
 class ItineraryDao {
-  final AppDataBase _dataBase;
+  final AppDatabase _database;
 
-  ItineraryDao(this._dataBase);
+  ItineraryDao(this._database);
 
   Future<void> insertItineraryWithLegs(
     Itinerary itinerary,
     List<String> legIds,
   ) async {
-    final db = await _dataBase.database;
+    final db = await _database.database;
 
     await db.insert('itineraries', {
       'id': itinerary.id,
@@ -29,20 +29,20 @@ class ItineraryDao {
   }
 
   Future<List<Itinerary>> getAllItinerariesWithLegs() async {
-    final db = await _dataBase.database;
+    final db = await _database.database;
     final itineraries = await db.query('itineraries');
-
     final itineraryList = <Itinerary>[];
 
     for (final itineraryMap in itineraries) {
       final legs = await db.rawQuery(
         '''
-            SELECT l.* FROM legs l
+      SELECT l.* FROM legs l
       JOIN itinerary_legs il ON l.id = il.leg_id
       WHERE il.itinerary_id = ?
-''',
+      ''',
         [itineraryMap['id']],
       );
+
       itineraryList.add(
         Itinerary(
           id: itineraryMap['id'] as String,
